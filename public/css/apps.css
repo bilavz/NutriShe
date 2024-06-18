@@ -66,6 +66,7 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  font-family: "Poppins", sans-serif;
 }
 
 /*
@@ -104,6 +105,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
+  font-family: "Poppins", sans-serif;
 }
 
 /*
@@ -246,6 +248,39 @@ input:where([type='submit']) {
   background-image: none;
   /* 2 */
 }
+
+.button-orange {
+  -webkit-appearance: button; /* 1 */
+  background-color: #EA7F59; /* 2 */
+  background-image: none; /* 2 */
+  border: none; /* Removes default border */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding for button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor changes to pointer */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+  width: 100%;
+}
+
+.button-orange:hover {
+  background-color: #d86b4f; /* Darker shade for hover effect */
+}
+
+.button-orange-transparent {
+  -webkit-appearance: button; /* 1 */
+  background-color: rgba(234, 127, 89, 0.5);
+  background-image: none; /* 2 */
+  border: none; /* Removes default border */
+  color: black; /* Text color */
+  padding: 10px 20px; /* Padding for button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor changes to pointer */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+  width: 100%;
+}
+
 
 /*
 Use the modern Firefox focus style for all focusable elements.
@@ -1213,6 +1248,7 @@ select {
 
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .from-pink-100 {
@@ -2132,4 +2168,98 @@ select {
   .bg-orange {
     background-color: #EA7F59;
     }
+}
+
+/* Calendar styles */
+.table-auto {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-auto th,
+.table-auto td {
+  padding: 8px;
+  text-align: center;
+}
+
+.table-auto th {
+  background-color: #f2f2f2;
+}
+
+.table-auto td {
+  cursor: pointer;
+  border-radius: 100%; /* Make the td circular */
+  width: 25px; /* Adjust size as needed */
+  height: 25px; /* Adjust size as needed */
+  line-height: 25px; /* Center text vertically */
+  border: 2px solid transparent;
+}
+
+/* Selected date styles */
+.selected {
+  background-color: #FFD9CC; /* light orange */
+  color: #EA7F59; /* orange */
+}
+
+/* Hover effect */
+.table-auto td:hover {
+  background-color: #f5f5f5;
+}
+
+.text-orange {
+  color: #EA7F59;
+}
+.text-black {
+  color: #000000;
+}
+.text-gray {
+  color: #6C7072;
+}
+
+.meal-option {
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.meal-option:hover {
+  outline: 1px solid #EA7F59;
+  color: #EA7F59;
+}
+
+.meal-option.selected {
+  background-color: #EA7F59;
+  color: white;
+}
+
+/* CSS for navigation buttons */
+.navigation-button {
+  cursor: pointer;
+  padding: 8px 12px; /* Adjust padding as needed */
+  min-width: 36px; /* Adjust minimum width as needed */
+  background-color: #F7F7F7;
+  border: 1px solid #E2E8F0;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4A5568;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.navigation-button:hover {
+  background-color: #E2E8F0;
+  color: #EA7F59;
+  border-color: #CBD5E0;
+}
+
+/* Ensure buttons have consistent width */
+#prev-month,
+#next-month {
+  width: auto; /* Set to 'auto' for dynamic width based on content */
+  display: flex;
+  align-items: center;
+}
+
+.hoverable {
+    cursor: pointer; /* Mengubah kursor saat di-hover */
+    /* Aturan CSS lainnya sesuai kebutuhan */
 }
