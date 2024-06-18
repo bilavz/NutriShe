@@ -1,4 +1,148 @@
-<!DOCTYPE html>
+@extends('body.main')
+
+@section('title', 'Landing Page')
+
+@section('container')
+    <!-- JUMBOTRON START -->
+    <section class="jumbotron" id="home">
+      <main class="content">
+        <h1>Nutrishe</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <a href="#rsvnow" class="rsv-now">Track your calories</a>
+      </main>
+
+      <div class="jumbotron-img">
+        <img src="img/jumbotron-img.png" alt="" />
+      </div>
+    </section>
+    <!-- JUMBOTRON END -->
+
+    <!-- FEATURES START -->
+    <section class="features">
+      <div class="features-container">
+        <h1>Features</h1>
+
+        <a href="diet_planner.html" class="feature">
+          <img src="{{ asset('assets/diet-planner.png') }}" alt="Diet Planner Icon" />
+          <p>AI Recommend</p>
+        </a>
+
+        <a href="meal_tracker.html" class="feature">
+          <img src="{{ asset('assets/meal-tracker.png') }}" alt="Meal Tracker Icon" />
+          <p>Meal Tracker</p>
+        </a>
+
+        <a href="log_period.html" class="feature">
+          <img src="{{ asset('assets/calories-calculator.png') }}" alt="Log Period Icon" />
+          <p>Log Calories</p>
+        </a>
+      </div>
+    </section>
+    <!-- FEATURES END -->
+
+    <!-- ARTICLES START -->
+    <section class="articles-part">
+      <div class="articles-container">
+        <h1>Articles</h1>
+        <div class="articles">
+          <div class="article">
+            <img src="{{ asset('assets/article-1.png') }}" alt="Article Image" />
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat...
+              <a href="#">See more</a>
+            </p>
+          </div>
+          <div class="article">
+            <img src="{{ asset('assets/article-2.png') }}" alt="Article Image" />
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat...
+              <a href="#">See more</a>
+            </p>
+          </div>
+          <div class="article">
+            <img src="{{ asset('assets/article-3.png') }}" alt="Article Image" />
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat...
+              <a href="#">See more</a>
+            </p>
+          </div>
+          <div class="article">
+            <img src="{{ asset('assets/article-4.png') }}" alt="Article Image" />
+            <h2>Lorem ipsum dolor sit amet</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat...
+              <a href="#">See more</a>
+            </p>
+          </div>
+        </div>
+        <a href="#" class="view-all-btn">View all articles</a>
+      </div>
+    </section>
+    <!-- ARTICLES END -->
+
+    <!-- ABOUT START -->
+    <section class="about-us">
+      <div class="about-image">
+        <img src="img/about-us.png" alt="" />
+      </div>
+
+      <div class="about-caption">
+        <h1>About Us</h1>
+        <h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </h3>
+      </div>
+    </section>
+    <!-- ABOUT END -->
+
+    <!-- FOOTER START -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="contact-info">
+          <h2>Contact Us</h2>
+          <p><i class="fa-brands fa-whatsapp"></i> +62 813-5818-3012</p>
+          <p><i class="fa-brands fa-instagram"></i> @nutri.she</p>
+          <p><i class="fa-solid fa-location-dot"></i> Malang</p>
+        </div>
+        <div class="footer-image">
+          <img src="{{ asset('assets/footer-img.png') }}" alt="Profile silhouette" />
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2024 NutriShe</p>
+      </div>
+    </footer>
+    <!-- FOOTER END -->
+    <script src="script.js"></script>
+  </body>
+</html>
+@endsection
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -36,4 +180,4 @@
                 </div>
             @endif
     </body>
-</html>
+</html> --}}
