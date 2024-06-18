@@ -12,7 +12,7 @@
                 <form action="calculate.php" method="POST">
                     {{-- Your Age --}}
                     <label for="age">Your Age</label>
-                    <input type="number" id="age" name="age" required>
+                    <input type="number" id="age" name="age" class="w-64 px-5 py-2 border rounded-full" required>
 
                     <label for="height">Your Height</label>
                     <input type="number" id="height" name="height" required>
