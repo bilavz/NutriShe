@@ -4,7 +4,7 @@
 
 @section('container')
     <!-- JUMBOTRON START -->
-    <section class="jumbotron" id="home">
+    <div class="jumbotron" id="home">
       <main class="content">
         <h1>Nutrishe</h1>
         <p>
@@ -17,9 +17,9 @@
       </main>
 
       <div class="jumbotron-img">
-        <img src="img/jumbotron-img.png" alt="" />
+        <img src="{{ asset('assets/jumbotron-img.png') }} " alt="" />
       </div>
-    </section>
+    </div>
     <!-- JUMBOTRON END -->
 
     <!-- FEATURES START -->
@@ -119,7 +119,7 @@
     <!-- ABOUT END -->
 
     <!-- FOOTER START -->
-    <footer class="footer">
+    <div class="footer">
       <div class="footer-container">
         <div class="contact-info">
           <h2>Contact Us</h2>
@@ -134,11 +134,9 @@
       <div class="footer-bottom">
         <p>Copyright © 2024 NutriShe</p>
       </div>
-    </footer>
+    </div>
     <!-- FOOTER END -->
     <script src="script.js"></script>
-  </body>
-</html>
 @endsection
 
 
