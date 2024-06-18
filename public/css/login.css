@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    /* height: 100%; */
+}
+
+.email h1{
+    font-size: 47px;
+    color: #574128;
+    margin-bottom: 1rem;
+    margin-top: 2px;
+}
+
+.email{
+    background: #CEAE8B;
+    padding: 0.5rem;
+    position: relative; 
+    margin-left: 25rem;
+    margin-right: 25rem;
+    margin-bottom: 10rem;
+    margin-top: 5rem;
+    border-radius: 20px;
+    text-align: center;
+    color:  #574128;    
+    /* width: 40rem; */
+    
+}  
+
+.email1{
+    /* text-color: #FFF3DD; */
+    background: #FFF3DD;
+    padding: 10px 120px;
+    position: relative; 
+    border: none;
+    margin-bottom: 1rem;
+    /* margin-top: 0.25rem; */
+    border-radius: 20px;
+    text-align: center;
+    /* width: 15%; */
+    justify-content: center;
+}
+
+.email x-text-input{
+padding: 10px 80px;
+  background: #FFF3DD;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.sign {
+    margin-top: 50px;
+    margin-bottom: 0rem;
+    background: #CEAE8B;
+    /* border: none; */
+}
+
+.ms-3{
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+    /* background: none; */
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    color: #CEAE8B;
+    font-weight: bold;
+}
+
+.forgot{
+    font-size: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.remember{
+    font-size: 15px;
+}
+
+.sign{
+    /* background-color: #FFF3DD; */
+    /* cursor: pointer;
+    transition: 0.5s; */
+    color: #574128;
+}
+
+.alert{
+    margin-top: 15px;
+    color: #574128;
+}
