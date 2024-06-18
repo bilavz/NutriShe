@@ -22,13 +22,14 @@ Route::get('/meal', function () {
     return view('meal.index');
 });
 
+Route::get('/calculator', function () {
+    return view('calculator.calculator');
+});
+
 Route::get('/login', function () {
     return view('auth.login');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/planner', function () {
-    return view('mealplan.index');
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

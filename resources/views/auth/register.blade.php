@@ -6,6 +6,7 @@
     <title>Register</title>
     <link href="{{ asset('css/apps.css') }}" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-r from-pink-200 to-orange-300/75 flex justify-center items-center h-screen">
     <div class="w-full max-w-md relative">
