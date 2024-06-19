@@ -2109,7 +2109,14 @@ select {
     display: flex;
     align-items: center; /* Center the contents of the label vertically */
 }
+.checkbox {
+    margin: 0; /* Remove any default margin from the checkbox */
+}
 
+.label-text {
+    margin-left: 8px; /* Adjust spacing between the checkbox and text */
+    display: inline-block;
+}
 
 
 /* apps.css
