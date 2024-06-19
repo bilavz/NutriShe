@@ -27,6 +27,10 @@ Route::get('/meal', function () {
     return view('meal.index');
 });
 
+Route::get('/ai', function () {
+    return view('meal.ai');
+});
+
 Route::get('/calculator', function () {
     return view('calculator.calculator');
 });
