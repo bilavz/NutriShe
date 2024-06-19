@@ -2201,6 +2201,11 @@ select {
   color: #EA7F59; /* orange */
 }
 
+.selected-food {
+  background-color: #EA7F59;
+  color: white;
+}
+
 /* Hover effect */
 .table-auto td:hover {
   background-color: #f5f5f5;
@@ -2223,7 +2228,7 @@ select {
 
 .meal-option:hover {
   outline: 1px solid #EA7F59;
-  color: #EA7F59;
+  color: #8a6659;
 }
 
 .meal-option.selected {
@@ -2262,4 +2267,28 @@ select {
 .hoverable {
     cursor: pointer; /* Mengubah kursor saat di-hover */
     /* Aturan CSS lainnya sesuai kebutuhan */
+}
+
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.meal-name {
+  flex: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meal-calories {
+  flex: 1;
+  text-align: right;
+  margin-right: 50px;
+}
+.meal-action {
+  flex: 0 0 auto;
+  margin-left: 10px;
+  color: orange;
+  margin-right: 10px;
 }

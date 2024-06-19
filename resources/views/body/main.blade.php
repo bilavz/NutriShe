@@ -29,7 +29,29 @@
             <a href="#" class="text-orange font-medium ml-4">Calorie Tracker</a>
         </nav>
         <div class="text-black">
-            <i class="fa-regular fa-circle-user fa-2x mr-3"></i>
+            <!-- Dropdown for User Profile and Logout -->
+            <nav x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="flex items-center space-x-2 text-black-500 hover:text-gray-700">
+                    <div>{{ session('user')['name'] }}</div>
+                    <i class="far fa-circle-user fa-2x"></i>
+                </button>
+
+                <!-- Dropdown Content -->
+                <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                    <x-dropdown-link :href="route('profile.edit')" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+                        {{ __('Profile') }}
+                    </x-dropdown-link>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')" class="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -44,5 +66,6 @@
     <footer class="bg-gradient-to-r from-pink-200 to-orange-300/75 p-4 mt-6 text-center">
         <p class="text-black font-medium">&copy; 2024 NutriShe</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </body>
 </html>
