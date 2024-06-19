@@ -17,10 +17,23 @@
             <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
+                <!-- Username -->
+                <div class="mb-2">
+                    <div class="relative">
+                        <input type="text" id="username" name="username" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Username" required autofocus>
+                        <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                            <img src="{{ asset('assets/username_icon.png') }}" alt="Username Icon" class="w-3.5 h-4">
+                        </div>
+                    </div>
+                    @error('username')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <!-- Name -->
                 <div class="mb-2">
                     <div class="relative">
-                        <input type="text" id="name" name="name" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Name" required autofocus>
+                        <input type="text" id="name" name="name" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Name" required>
                         <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                             <img src="{{ asset('assets/username_icon.png') }}" alt="Username Icon" class="w-3.5 h-4">
                         </div>
@@ -69,12 +82,12 @@
                 <!-- Date of Birth -->
                 <div class="mb-2">
                     <div class="relative">
-                        <input type="text" id="dob" name="dob" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="MM/DD/YY">
+                        <input type="date" id="birthdate" name="birthdate" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="MM/DD/YY" required>
                         <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                            <img src="{{ asset('assets/date_icon.png') }}" alt="Date Icon" class="w-3.5 h-4">
                         </div>
                     </div>
-                    @error('dob')
+                    @error('birthdate')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
@@ -83,7 +96,7 @@
                 <div class="flex space-x-4 mb-2">
                     <div class="w-1/2">
                         <div class="relative">
-                            <input type="number" id="height" name="height" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Height">
+                            <input type="number" id="height" name="height" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Height" required>
                             <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                                 <img src="{{ asset('assets/height_icon.png') }}" alt="Height Icon" class="w-3.5 h-4">
                             </div>
@@ -94,7 +107,7 @@
                     </div>
                     <div class="w-1/2">
                         <div class="relative">
-                            <input type="number" id="weight" name="weight" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Weight">
+                            <input type="number" id="weight" name="weight" class="w-full px-5 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Weight" required>
                             <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                                 <img src="{{ asset('assets/weight_icon.png') }}" alt="Weight Icon" class="w-3.5 h-4">
                             </div>
