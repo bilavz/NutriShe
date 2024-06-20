@@ -1,7 +1,3 @@
-
-
-
-
 /*
 ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
 */
@@ -1340,6 +1336,10 @@ select {
   text-align: center;
 }
 
+.text-orange {
+    color: #EA7F59;
+}
+
 .font-sans {
   font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -2169,7 +2169,7 @@ select {
 }
 
 .about-image img {
-  height: 23rem;
+  width: 270px;
 }
 
 .about-caption {
@@ -2425,126 +2425,4 @@ select {
     }
 }
 
-/* Calendar styles */
-.table-auto {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.table-auto th,
-.table-auto td {
-  padding: 8px;
-  text-align: center;
-}
-
-.table-auto th {
-  background-color: #f2f2f2;
-}
-
-.table-auto td {
-  cursor: pointer;
-  border-radius: 100%; /* Make the td circular */
-  width: 25px; /* Adjust size as needed */
-  height: 25px; /* Adjust size as needed */
-  line-height: 25px; /* Center text vertically */
-  border: 2px solid transparent;
-}
-
-/* Selected date styles */
-.selected {
-  background-color: #FFD9CC; /* light orange */
-  color: #EA7F59; /* orange */
-}
-
-.selected-food {
-  background-color: #EA7F59;
-  color: white;
-}
-
-/* Hover effect */
-.table-auto td:hover {
-  background-color: #f5f5f5;
-}
-
-.text-orange {
-  color: #EA7F59;
-}
-.text-black {
-  color: #000000;
-}
-.text-gray {
-  color: #6C7072;
-}
-
-.meal-option {
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.meal-option:hover {
-  outline: 1px solid #EA7F59;
-  color: #8a6659;
-}
-
-.meal-option.selected {
-  background-color: #EA7F59;
-  color: white;
-}
-
-/* CSS for navigation buttons */
-.navigation-button {
-  cursor: pointer;
-  padding: 8px 12px; /* Adjust padding as needed */
-  min-width: 36px; /* Adjust minimum width as needed */
-  background-color: #F7F7F7;
-  border: 1px solid #E2E8F0;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #4A5568;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.navigation-button:hover {
-  background-color: #E2E8F0;
-  color: #EA7F59;
-  border-color: #CBD5E0;
-}
-
-/* Ensure buttons have consistent width */
-#prev-month,
-#next-month {
-  width: auto; /* Set to 'auto' for dynamic width based on content */
-  display: flex;
-  align-items: center;
-}
-
-.hoverable {
-    cursor: pointer; /* Mengubah kursor saat di-hover */
-    /* Aturan CSS lainnya sesuai kebutuhan */
-}
-
-.meal-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.meal-name {
-  flex: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.meal-calories {
-  flex: 1;
-  text-align: right;
-  margin-right: 50px;
-}
-.meal-action {
-  flex: 0 0 auto;
-  margin-left: 10px;
-  color: orange;
-  margin-right: 10px;
-}
 
