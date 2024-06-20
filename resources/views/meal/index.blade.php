@@ -6,9 +6,9 @@
 <h2 class="text-3xl font-bold mb-4 text-orange">Meal Planner</h2>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     <!-- Left Column: Meal Tracker Form -->
-    <form id="log-meal-form" method="POST" action="{{ route('meal.logMeal') }}">
-        @csrf
-        <div class="bg-white p-6 rounded-lg shadow-md col-span-1 lg:col-span-1">
+    <div class="bg-white p-6 rounded-lg shadow-md col-span-1 lg:col-span-1">
+        <form id="log-meal-form" method="POST" action="{{ route('meal.logMeal') }}">
+            @csrf
             <div class="mb-4">
                 <label for="meal" class="block text-orange font-medium mb-2">What do you wanna eat?</label>
                 <select id="meal" class="w-full border border-gray-300 rounded-lg p-2">
@@ -41,32 +41,9 @@
                     @endforeach
                 @endforeach
             </div>
+            
 
-            <div class="mt-3 mb-4">
-                <label for="date" class="block text-orange font-medium mb-2">When did you eat it?</label>
-                <div class="flex flex-wrap items-center mb-2">
-                    <div class="w-32 pr-4">
-                        <div class="text-black font-medium">Date<span class="text-orange"> *</span></div>
-                    </div>
-                    <input type="text" id="selected-date" class="border border-gray-300 rounded-lg p-2 flex-1 text-gray-500 text-right mb-2" readonly>
-                    <input type="hidden" id="date" name="meal_date" value="">
-                    <input type="hidden" id="food_id" name="food_id">
-                </div>
-                <button type="submit" id="log-meal-button" class="button-orange rounded-lg px-4">Log Meal</button>
-            </div>
-        </div>
-    </form>
-
-            <!-- <div class="mt-4 mb-4">
-                <label class="block text-orange font-medium mb-2">Add your own meal</label>
-                <div class="flex flex-col mb-2">
-                    <div class="flex flex-wrap items-center mb-2">
-                        <div class="w-32 pr-4">
-                            <div class="text-black font-medium">Meal Name<span class="text-orange"> *</span></div>
-                        </div>
-                        <input type="text" placeholder="Name" class="border border-gray-300 rounded-lg p-2 flex-1">
-                    </div>
-                    <div class="flex flex-wrap items-center mb-2">
+                                <!-- <div class="flex flex-wrap items-center mb-2">
                         <div class="w-50 pr-4" style="padding-right: 5px;">
                             <div class="text-black font-medium">Meal Amount<span class="text-orange"> *</span></div>
                         </div>
@@ -85,17 +62,52 @@
                                 <option value="glass">glass</option>
                             </select>
                         </div>
+                    </div> -->
+
+            <div class="mt-3 mb-4">
+                <label for="date" class="block text-orange font-medium mb-2">When will you eat it?</label>
+                <div class="flex flex-wrap items-center mb-2">
+                    <div class="w-32 pr-4">
+                        <div class="text-black font-medium">Date<span class="text-orange"> *</span></div>
+                    </div>
+                    <input type="text" id="selected-date" class="border border-gray-300 rounded-lg p-2 flex-1 text-gray-500 text-right mb-2" readonly>
+                    <input type="hidden" id="date" name="meal_date" value="">
+                    <input type="hidden" id="food_id" name="food_id">
+                </div>
+                <button type="submit" id="log-meal-button" class="button-orange rounded-lg px-4">Log Meal</button>
+            </div>
+        </form>
+        <div class="mt-4 mb-4">
+            <label class="block text-orange font-medium mb-2">Add your own meal</label>
+            <form method="POST" action="{{ route('meal.addFood') }}">
+                @csrf
+                <div class="flex flex-col mb-2">
+                    <div class="flex flex-wrap items-center mb-2">
+                        <div class="w-32 pr-4">
+                            <div class="text-black font-medium">Meal Name<span class="text-orange"> *</span></div>
+                        </div>
+                        <input type="text" name="name" placeholder="name" class="border border-gray-300 rounded-lg p-2 flex-1">
+                    </div>
+
+                    <div class="flex flex-wrap items-center mb-2">
+                        <div class="w-50 pr-4">
+                            <div class="text-black font-medium">Meal Serving<span class="text-orange"> *</span></div>
+                        </div>
+                        <input type="number" name="serving" placeholder="serving" class="border border-gray-300 rounded-lg p-2 flex-1">
                     </div>
                     <div class="flex flex-wrap items-center">
                         <div class="w-50 pr-4">
                             <div class="text-black font-medium">Meal Calorie<span class="text-orange"> *</span></div>
                         </div>
-                        <input type="number" placeholder="Calorie" class="border border-gray-300 rounded-lg p-2 flex-1">
+                        <input type="number" name="calories" placeholder="calories" class="border border-gray-300 rounded-lg p-2 flex-1">
                     </div>
                 </div>
-                <button class="button-orange-transparent rounded-lg px-4 mt-2"><span class="text-orange">+ </span>Add your own meal</button>
-            </div>
-        </div> -->
+                <button type="submit" class="button-orange-transparent rounded-lg px-4 mt-2"><span class="text-orange">+ </span>Add your own meal</button>
+            </form>
+        </div>
+    </div>
+
+            
         
 
     <!-- Middle Column: Calendar -->
@@ -127,9 +139,7 @@
         <div id="meal-for-today" class="bg-white p-6 rounded-lg shadow-md">
             <!-- Meals for today will be dynamically updated here -->
         </div>
-        <!-- <div class="mt-4">
-            <a href="{{ route('meal.show') }}" class="button-orange rounded-lg px-4">View Meal Details</a>
-        </div> -->
+
 
 
     </div>

@@ -22,11 +22,13 @@
             <img src="{{ asset('assets/NutriShe.png') }}" alt="NutriShe" class="h-9 mr-5">
         </div>
         <nav>
-            <a href="#" class="text-orange font-medium mr-4">Home</a>
-            <a href="#" class="text-orange font-medium mr-4">Features</a>
-            <a href="#" class="text-orange font-medium mr-4">Article</a>
-            <a href="#" class="text-orange font-medium">Diet Planner</a>
-            <a href="#" class="text-orange font-medium ml-4">Calorie Tracker</a>
+        <a href="{{ route('welcome') }}" class="{{ request()->routeIs('welcome') ? 'text-orange font-medium' : 'text-black' }} mr-4">Home</a>
+        <a href="#" class="{{ request()->routeIs('features') ? 'text-orange font-medium' : 'text-black' }} mr-4">Features</a>
+        <a href="#" class="{{ request()->routeIs('article') ? 'text-orange font-medium' : 'text-black' }} mr-4">Article</a>
+        <a href="#" class="{{ request()->routeIs('dietPlanner') ? 'text-orange font-medium' : 'text-black' }}">Diet Planner</a>
+        <a href="{{ route('calculator.calculator') }}" class="{{ request()->routeIs('calculator.calculator') ? 'text-orange font-medium' : 'text-black' }} ml-4">Calorie Calculator</a>
+        <a href="{{ route('meal.index') }}" class="{{ request()->routeIs('meal.index') ? 'text-orange font-medium' : 'text-black' }} ml-4">Calorie Tracker</a>
+
         </nav>
         <div class="text-black">
             <!-- Dropdown for User Profile and Logout -->

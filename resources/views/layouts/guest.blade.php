@@ -5,28 +5,26 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link href="./apps.css" rel="stylesheet">
+        <link href="{{ asset('css/apps.css') }}" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100" style="width: 100%; height: 100%;">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
-
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="bg-gradient-to-r from-pink-200 to-orange-300/75 flex justify-center items-center h-screen" style="width: 100%; height: 100%;">
+            <div class="w-full max-w-md relative">
+                <div class="flex justify-center w-100 h-16 max-w-md">
+                    <img src="{{ asset('assets/logo.png') }}" alt="Logo">
+                </div>
+                <div class="backdrop-blur-md p-5 rounded-3xl shadow-lg w-full max-w-md">
                 {{ $slot }}
+                </div>
             </div>
         </div>
     </body>

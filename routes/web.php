@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 // Route::get('/meal', function () {
 //     return view('meal.index');
@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['web', 'check.api.token'])->name('dashboard');
 
 Route::middleware(['web', 'check.api.token'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,8 +34,9 @@ Route::middleware(['web', 'check.api.token'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::get('/meal', [MealController::class, 'index'])->name('meal.index');
-    Route::post('/logmeal', [MealController::class, 'logMeal'])->name('meal.logMeal');
-    Route::get('/meal/show', [MealController::class, 'show'])->name('meal.show');
+    Route::post('/meal/logmeal', [MealController::class, 'logMeal'])->name('meal.logMeal');
+    Route::post('/meal/add-food', [MealController::class, 'addFood'])->name('meal.addFood');
+    Route::get('/meal/calculator', [MealController::class, 'calculator'])->name('calculator.calculator');
     Route::post('/meals-by-date', [MealController::class, 'getMealsByDate'])->name('meal.getMealsByDate');
 });
 

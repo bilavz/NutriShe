@@ -29,17 +29,18 @@ class MealController extends Controller
         return view('meal.index', compact('user', 'foodsByType', 'filterType'));
     }
 
-    public function show(Request $request)
+    public function calculator(Request $request)
     {
         $user = $request->session()->get('user');
 
-        return view('meal.detail', compact('user'));
+        return view('calculator.calculator', compact('user'));
     }
+    
 
     public function logMeal(Request $request)
     {
         $goServerUrl = env('GO_SERVER_URL');
-        Log::debug('Data in controller');
+        // Log::debug('Data in controller');
         $request->validate([
             'food_id' => 'required|string',
             'meal_date' => 'required|date_format:Y-m-d',
@@ -77,7 +78,7 @@ class MealController extends Controller
     public function getMealsByDate(Request $request)
     {
         $goServerUrl = env('GO_SERVER_URL');
-        Log::debug('Data in controller');
+        // Log::debug('Data in controller');
 
         try {
             // Validasi input
@@ -131,4 +132,61 @@ class MealController extends Controller
             return redirect()->back()->with('error', 'Failed to connect to server. Please try again later.');
         }
     }
+
+    public function addFood(Request $request)
+    {
+        $goServerUrl = env('GO_SERVER_URL');
+
+        // Log sebelum validasi
+        Log::debug('Before validation');
+        try {
+            // Validasi input dari request
+            $request->validate([
+                'name' => 'required|string',
+                'serving' => 'required|integer|min:1',
+                'calories' => 'required|integer|min:0',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Log jika validasi gagal
+            Log::error('Validation failed:', ['errors' => $e->errors()]);
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        }
+
+        $serving = intval($request->input('serving'));
+        $calories = intval($request->input('calories'));
+        
+        // Log setelah validasi berhasil
+        Log::debug('Validation successful');
+        Log::debug('Before sending data to Golang server');
+        
+        // Data yang akan dikirimkan ke server Golang
+        $data = [
+            'name' => $request->input('name'),
+            'serving' => $serving,
+            'calories' => $calories,
+        ];
+
+        Log::debug('Data to send to Golang server:', $data);
+        Log::debug('After sending data to Golang server');
+
+        // Kirim permintaan HTTP POST ke server Golang
+        try {
+            $response = Http::post($goServerUrl . '/add_meal', $data);
+            Log::debug('Response from Golang server:', ['status' => $response->status(), 'body' => $response->json()]);
+            
+            // Memeriksa keberhasilan respons dari server Golang
+            if ($response->successful()) {
+                // Redirect hanya jika data berhasil ditambahkan
+                return redirect()->back()->with('success', 'Food added successfully!');
+            } else {
+                return redirect()->back()->with('error', 'Failed to add food. Please try again later.');
+            }
+        } catch (\Exception $e) {
+            Log::error('Failed to connect to Golang server:', ['exception' => $e]);
+            return redirect()->back()->with('error', 'Failed to connect to server. Please try again later.');
+        }
+    }
+
+
+
 }
