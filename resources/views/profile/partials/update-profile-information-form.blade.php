@@ -1,12 +1,9 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-2xl font-medium text-gray-900 text-center">
             {{ __('Profile Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
-        </p>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -19,19 +16,19 @@
 
         <div>
             <x-input-label for="username" :value="__('Username')" />
-            <x-text-input id="username" name="username" type="text" class="mt-1 block w-full" :value="old('username', $user['username'])" required autofocus autocomplete="name" />
+            <x-text-input id="username" name="username" type="text" class="mt-1 block w-full" :value="old('username', $user['username'])" required autofocus autocomplete="name" readonly />
             <x-input-error class="mt-2" :messages="$errors->get('username')" />
         </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user['name'])" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user['name'])" required autofocus autocomplete="name" readonly />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
         
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user['email'])" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user['email'])" required autocomplete="username" readonly />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
                 
             {{-- @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -55,23 +52,23 @@
             
             <div>
                 <x-input-label for="birthdate" :value="__('Birthdate')" />
-                <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" :value="old('birthdate', $user['birthdate'])" required autofocus autocomplete="name" />
+                <x-text-input id="birthdate" name="birthdate" type="date" class="mt-1 block w-full" :value="old('birthdate', $user['birthdate'])" required autofocus autocomplete="name" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('birthdate')" />
             </div>
 
             <div>
                 <x-input-label for="height" :value="__('Height')" />
-                <x-text-input id="height" name="height" type="number" class="mt-1 block w-full" :value="old('height', $user['height'])" required autofocus autocomplete="name" />
+                <x-text-input id="height" name="height" type="number" class="mt-1 block w-full" :value="old('height', $user['height'])" required autofocus autocomplete="name" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('height')" />
             </div>
 
             <div>
                 <x-input-label for="weight" :value="__('Weight')" />
-                <x-text-input id="weight" name="weight" type="number" class="mt-1 block w-full" :value="old('weight', $user['weight'])" required autofocus autocomplete="name" />
+                <x-text-input id="weight" name="weight" type="number" class="mt-1 block w-full" :value="old('weight', $user['weight'])" required autofocus autocomplete="name" readonly />
                 <x-input-error class="mt-2" :messages="$errors->get('weight')" />
             </div>
             
-            <div class="flex items-center gap-4">
+            {{-- <div class="flex items-center gap-4">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
 
                 @if (session('status') === 'profile-updated')
@@ -82,7 +79,7 @@
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
-            @endif
+            @endif --}}
         </div>
     </form>
 </section>
