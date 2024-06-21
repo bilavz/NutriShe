@@ -9,7 +9,7 @@
     <div class="bg-white p-6 rounded-lg shadow-md col-span-1 lg:col-span-1">
         <form id="log-meal-form" method="POST" action="{{ route('meal.logMeal') }}">
             @csrf
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label for="meal" class="block text-orange font-medium mb-2">What do you wanna eat?</label>
                 <select id="meal" class="w-full border border-gray-300 rounded-lg p-2">
                     <option value="all">Filter by Type</option>
@@ -19,7 +19,7 @@
                     <option value="fruit">Fruit</option>
                     <option value="vegetable">Vegetable</option>
                 </select>
-            </div>
+            </div> --}}
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($foodsByType as $type => $foods)
                     @foreach ($foods as $food)
@@ -41,77 +41,27 @@
                     @endforeach
                 @endforeach
             </div>
-            
-
-                                <!-- <div class="flex flex-wrap items-center mb-2">
-                        <div class="w-50 pr-4" style="padding-right: 5px;">
-                            <div class="text-black font-medium">Meal Amount<span class="text-orange"> *</span></div>
-                        </div>
-                        <div class="flex flex-wrap items-center flex-1">
-                            <input type="number" placeholder="Amount" class="border border-gray-300 rounded-lg p-2 flex-1 w-24 m-1">
-                            <select class="border border-gray-300 rounded-lg p-2 w-24">
-                                <option value="gram">gram</option>
-                                <option value="ml">ml</option>
-                                <option value="ounce">ounce</option>
-                                <option value="cup">cup</option>
-                                <option value="teaspoon">teaspoon</option>
-                                <option value="tablespoon">tablespoon</option>
-                                <option value="slice">slice</option>
-                                <option value="piece">piece</option>
-                                <option value="bowl">bowl</option>
-                                <option value="glass">glass</option>
-                            </select>
-                        </div>
-                    </div> -->
 
             <div class="mt-3 mb-4">
                 <label for="date" class="block text-orange font-medium mb-2">When will you eat it?</label>
                 <div class="flex flex-wrap items-center mb-2">
-                    <div class="w-32 pr-4">
+                    <div class="w-32">
                         <div class="text-black font-medium">Date<span class="text-orange"> *</span></div>
                     </div>
                     <input type="text" id="selected-date" class="border border-gray-300 rounded-lg p-2 flex-1 text-gray-500 text-right mb-2" readonly>
                     <input type="hidden" id="date" name="meal_date" value="">
                     <input type="hidden" id="food_id" name="food_id">
                 </div>
-                <button type="submit" id="log-meal-button" class="button-orange rounded-lg px-4">Log Meal</button>
+                <button type="submit" id="log-meal-button" class="flex justify-center button-orange-transparent w-full rounded-lg px-4 font-medium hover:bg-orange-700/75 focus:outline-none focus:ring-2 focus:ring-orange-500">Log Meal</button>
             </div>
         </form>
-        <div class="mt-4 mb-4">
-            <label class="block text-orange font-medium mb-2">Add your own meal</label>
-            <form method="POST" action="{{ route('meal.addFood') }}">
-                @csrf
-                <div class="flex flex-col mb-2">
-                    <div class="flex flex-wrap items-center mb-2">
-                        <div class="w-32 pr-4">
-                            <div class="text-black font-medium">Meal Name<span class="text-orange"> *</span></div>
-                        </div>
-                        <input type="text" name="name" placeholder="name" class="border border-gray-300 rounded-lg p-2 flex-1">
-                    </div>
-
-                    <div class="flex flex-wrap items-center mb-2">
-                        <div class="w-50 pr-4">
-                            <div class="text-black font-medium">Meal Serving<span class="text-orange"> *</span></div>
-                        </div>
-                        <input type="number" name="serving" placeholder="serving" class="border border-gray-300 rounded-lg p-2 flex-1">
-                    </div>
-                    <div class="flex flex-wrap items-center">
-                        <div class="w-50 pr-4">
-                            <div class="text-black font-medium">Meal Calorie<span class="text-orange"> *</span></div>
-                        </div>
-                        <input type="number" name="calories" placeholder="calories" class="border border-gray-300 rounded-lg p-2 flex-1">
-                    </div>
-                </div>
-                <button type="submit" class="button-orange-transparent rounded-lg px-4 mt-2"><span class="text-orange">+ </span>Add your own meal</button>
-            </form>
-        </div>
     </div>
 
             
         
 
     <!-- Middle Column: Calendar -->
-    <div class="grid gap-3 col-span-1 lg:col-span-1 lg:col-start-2">
+    <div>
         <div class="bg-white p-6 rounded-lg shadow-md">
             <div class="flex justify-between items-center mb-4">
                 <!-- Previous Month Button -->
@@ -131,83 +81,79 @@
                 <!-- Calendar will be dynamically generated here -->
             </div>
         </div>
-            
-        <img src="{{ asset('assets/article.png') }}" alt="Article">
+        
+        <div class="py-3">
+            <a href="{{ route('search') }}" ><img src="{{ asset('assets/article.png') }}" alt="Article"></a>
+        </div>
         
         <!-- Section to display meals for today -->
-        <h2 class="text-2xl font-bold text-orange">Your meal for today</h2>
+        <h2 class="text-2xl font-bold text-orange mb-2">Your meal for today</h2>
         <div id="meal-for-today" class="bg-white p-6 rounded-lg shadow-md">
             <!-- Meals for today will be dynamically updated here -->
         </div>
-
-
-
     </div>
 
     <!-- Right Column: Calorie Tracker -->
-    <div class="grid gap-3 col-span-1 lg:col-span-1 lg:col-start-3">
+    <div>
         <!-- Today's Calories -->
-        <h2 class="text-2xl font-bold text-orange">Today's Calories</h2>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="text-center mb-2">
-                <div class="text-4xl font-bold text-orange">1560</div>
-                <div class="font-medium text-black">calories</div>
-            </div>
-            <hr>
-            <div class="text-center mt-2 mb-2">
-                <div class="text-lg font-medium text-orange">1579 <span class="text-black">calories</span></div>
-                <div class="text-gray font-medium">Target per-day</div>
-            </div>
-            <div class="text-center">
-                <div class="text-lg font-medium text-black">1560 calories</div>
-                <div class="text-gray font-medium">Yesterday</div>
+        <div>
+            <h2 class="text-2xl font-bold text-orange mb-2">Today's Calories</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="text-center mb-2">
+                    <div id="today-calories" class="text-4xl font-bold text-orange">0</div>
+                    <div class="font-medium text-black">calories</div>
+                </div>
+                <hr>
+                <div class="text-center mt-2 mb-2">
+                    <div class="text-2xl font-medium text-orange" id="calorie-data">Loading... <span class="text-black">calories</span></div>
+                    <div class="text-gray font-medium">Ideal per-day</div>
+                </div>
             </div>
         </div>
 
         <!-- Calories Goals -->
-        <h2 class="text-2xl font-bold text-orange">Calories Goals</h2>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex justify-between mb-2">
-                <div>
-                    <div class="text-gray font-medium">Started at</div>
-                </div>
-                <div class="font-medium text-black">June 1, 2024</div>
-            </div>
-            <div class="flex justify-between mt-2 mb-2">
-                <div>
-                    <div class="text-gray font-medium">Ended at</div>
-                </div>
-                <div class="font-medium text-black">July 3, 2024</div>
-            </div>
-            <hr>
-            <div class="mt-2 mb-2">
-                <div class="font-medium text-xl text-black mb-2">Day 13</div>
-                <div class="font-medium text-orange">30 days <span class="text-gray">to go</span></div>
-            </div>
-            <hr>
-            <div class="flex justify-between mt-3">
-                <div>
-                    <div class="text-black text-xl font-medium">Excess calories</div>
-                </div>
-                <div class="font-medium text-xl text-orange">3200 calories</div>
-            </div>
+        {{-- <div class="py-3">
+
+        <h2 class="text-2xl font-bold text-orange">Calories Goals</h2> --}}
+        <div class="py-3">
+            <a href="{{ route('meal.ai') }}" class="flex text-xl justify-center button-pink-transparent w-full rounded-lg px-4 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <i class="fa-solid fa-robot"></i>
+                Don't know what to eat?<br>
+                Get meal plan suggestions from AI here! <i class="fa-solid fa-robot"></i>
+            </a>
         </div>
 
-        <!-- This Month's Calories -->
-        <h2 class="text-2xl font-bold text-orange">This Month's Calories</h2>
+        <h2 class="text-2xl font-bold text-orange mb-2">Add your own meal</h2>
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="text-center mb-2">
-                <div class="text-lg font-medium text-black">1590 calories</div>
-                <div class="text-gray font-medium">Average per-day</div>
-            </div>
-            <hr>
-            <div class="text-center mt-2">
-                <div class="text-lg font-medium text-black">36575 calories</div>
-                <div class="text-gray font-medium">Total calories</div>
+            <div class="mt-2">
+                <form method="POST" action="{{ route('meal.addFood') }}">
+                    @csrf
+                    <div class="flex flex-col mb-2">
+                        <div class="flex flex-wrap items-center mb-2">
+                            <div class="w-32">
+                                <div class="text-black font-medium">Meal Name<span class="text-orange"> *</span></div>
+                            </div>
+                            <input type="text" name="name" placeholder="name" class="border border-gray-300 rounded-lg p-2 flex-1">
+                        </div>
+    
+                        <div class="flex flex-wrap items-center mb-2">
+                            <div class="w-50">
+                                <div class="text-black font-medium">Meal Serving<span class="text-orange"> *</span></div>
+                            </div>
+                            <input type="number" name="serving" placeholder="serving" class="border border-gray-300 rounded-lg p-2 flex-1">
+                        </div>
+                        <div class="flex flex-wrap items-center mb-2">
+                            <div class="w-50">
+                                <div class="text-black font-medium">Meal Calorie<span class="text-orange"> *</span></div>
+                            </div>
+                            <input type="number" name="calories" placeholder="calories" class="border border-gray-300 rounded-lg p-2 flex-1">
+                        </div>
+                    </div>
+                    <button type="submit" class="flex justify-center button-orange-transparent w-full rounded-lg px-4 font-medium hover:bg-orange-700/75 focus:outline-none focus:ring-2 focus:ring-orange-500"><span class="text-white">+  </span>Add your own meal</button>
+                </form>
             </div>
         </div>
     </div>
-
 </div>
 
 
@@ -226,37 +172,7 @@
         let currentYear = null;
         let currentMonth = null;
 
-        // Sample data for meals (to be replaced with actual data)
-        // const mealsData = [
-        //     { name: 'Apple', type: 'fruit' },
-        //     { name: 'Banana', type: 'fruit' },
-        //     { name: 'Chicken', type: 'food' },
-        //     { name: 'Salad', type: 'vegetable' },
-        //     { name: 'Water', type: 'drink' },
-        //     { name: 'Chips', type: 'snack' },
-        //     { name: 'Carrot', type: 'vegetable' },
-        //     { name: 'Orange Juice', type: 'drink' },
-        //     { name: 'Cake', type: 'snack' }
-        // ];
-
-        // function fetchMealData(filterType) {
-        //     console.log('Fetching meal data for filter:', filterType);
-        //     fetch('{{ route('meal.index') }}')
-        //         .then(response => {
-        //             if (!response.ok) {
-        //                 throw new Error('Network response was not ok');
-        //             }
-        //             return response.json();
-        //         })
-        //         .then(data => {
-        //             console.log('Fetched meal data:', data);
-        //             renderMealOptions(data, filterType);
-        //         })
-        //         .catch(error => {
-        //             console.error('Error fetching meal data:', error);
-        //         });
-        // }
-
+      
 
         // function renderMealOptions(foodsByType, filterType) {
         //         mealOptionsContainer.innerHTML = '';
@@ -444,21 +360,20 @@
                 .then(response => response.json())
                 .then(data => {
                     let content = '';
+                    let totalCalories = 0;
                     if (!data || !data.meals || data.meals.length === 0) {
                         content = '<div class="text-center justify-center text-gray-500">No data</div>';
                     } else {
                         data.meals.forEach(meal => {
                             content += `
-                                <div class="meal-item">
+                                <div class="meal-item justify-between">
                                     <div class="meal-name">
                                         <div class="text-black font-medium">${meal.name}</div>
                                     </div>
                                     <div class="meal-calories font-medium text-black">${meal.calories} kkal</div>
-                                    <div class="meal-action">
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </div>
                                 </div>
                             `;
+                            totalCalories += meal.calories;
                         });
                         content += `
                             <hr>
@@ -467,14 +382,38 @@
                                     <div class="text-gray font-medium">Total</div>
                                 </div>
                                 <div class="font-medium text-orange">${data.totalCalories} kkal</div>
-                                <div class="text-orange"></div>
                             </div>
                         `;
                     }
                     document.getElementById('meal-for-today').innerHTML = content;
+                    
+                    document.getElementById('today-calories').textContent = totalCalories;
                 })
                 .catch(error => {
                     console.error('Error fetching meals for today:', error);
+                });
+        }
+
+        function deleteMeal(mealId) {
+            const requestData = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ meal_id: mealId })
+            };
+
+            fetch('{{ route("meal.delete") }}', requestData)
+                .then(response => {
+                    if (response.ok) {
+                        refreshMealsForToday(selectedDateInput.value); // Refresh meals after deletion
+                    } else {
+                        console.error('Error deleting meal:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting meal:', error);
                 });
         }
 
@@ -517,6 +456,49 @@
         // Set default filter to 'all' and render meal options
         // mealSelect.value = 'all';
         // renderMealOptions('all');
+        // Make an AJAX request to get the calorie data
+        // fetch('{{ route("meal.getCalorieData") }}', {
+        //     method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Accept': 'application/json',
+        //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        //         },
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.error) {
+        //         document.getElementById('calorie-data').textContent = 'Error loading data';
+        //     } else {
+        //         document.getElementById('calorie-data').innerHTML = `${data.calories} <span class="text-black">calories</span>`;
+        //     }
+        // })
+        // .catch(error => {
+        //     document.getElementById('calorie-data').textContent = 'Error loading data';
+        //     console.error('Error:', error);
+        // });
+
+        $.ajax({
+            url: '{{ route("meal.getCalorieData") }}',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                $('#calorie-data').html(''); // Remove the loading text
+                if (response.error) {
+                    $('#calorie-data').html('Failed to fetch data');
+                    console.error('Error fetching calorie data:', response.error);
+                } else {
+                    $('#calorie-data').html(response); // Directly set the response as HTML
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching calorie data:', error);
+                $('#calorie-data').html('Failed to fetch data');
+            }
+        });
+
     });
 </script>
 @endsection

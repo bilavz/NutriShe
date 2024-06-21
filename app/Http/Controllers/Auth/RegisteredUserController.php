@@ -65,7 +65,7 @@ class RegisteredUserController extends Controller
                 // Registration successful
                 Log::info('User registered successfully:', ['response' => $response->body()]);
 
-                return redirect()->route('home');
+                return redirect()->route('login');
             } else {
                 // Registration failed
                 Log::error('Failed to register user:', ['error' => $response->body()]);

@@ -17,8 +17,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="bg-gradient-to-r from-pink-200 to-orange-300/75 flex justify-center items-center h-screen" style="width: 100%; height: 100%;">
-            <div class="w-full max-w-md relative">
+        <div class="bg-gradient-to-r from-pink-200 to-orange-300/75 flex justify-center items-center h-screen">
+            <div class="w-full max-w-md relative" >
                 <div class="flex justify-center w-100 h-16 max-w-md">
                     <img src="{{ asset('assets/logo.png') }}" alt="Logo">
                 </div>

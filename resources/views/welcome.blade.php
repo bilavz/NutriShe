@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing page</title>
-    <link href="{{ asset('css/landing.css') }}" rel="stylesheet">
+    <title>@yield('title', 'NutriShe')</title>
+    <link href="{{ asset('css/apps.css') }}" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-r from-pink-200 to-orange-300/75 antialiased">
+
     <!-- Header -->
     <header class="bg-gradient-to-r from-pink-200 to-orange-300/75 p-4 flex justify-between items-center">
         <div class="flex items-center">
@@ -21,27 +23,57 @@
             <img src="{{ asset('assets/NutriShe.png') }}" alt="NutriShe" class="h-9 mr-5">
         </div>
         <nav>
-            <a href="#" class="text-orange font-medium mr-4">Home</a>
-            <a href="#" class="text-orange font-medium mr-4">Features</a>
-            <a href="#" class="text-orange font-medium mr-4">Article</a>
-            <a href="#" class="text-orange font-medium">Diet Planner</a>
-            <a href="#" class="text-orange font-medium ml-4">Calorie Tracker</a>
+          @if (session()->has('token'))
+          <a href="{{ route('welcome') }}" class="{{ request()->routeIs('welcome') ? 'text-orange font-medium' : 'text-black' }} ml-4">Home</a>
+          <a href="{{ route('search') }}" class="{{ request()->routeIs('search') ? 'text-orange font-medium' : 'text-black' }} ml-4">Article</a>
+          <a href="{{ route('calculator.calculator') }}" class="{{ request()->routeIs('calculator.calculator') ? 'text-orange font-medium' : 'text-black' }} ml-4">Calorie Calculator</a>
+          <a href="{{ route('meal.index') }}" class="{{ request()->routeIs('meal.index') ? 'text-orange font-medium' : 'text-black' }} ml-4">Calorie Tracker</a>
+          @endif
         </nav>
         <div class="text-black">
-            <i class="fa-regular fa-circle-user fa-2x mr-3"></i>
+          @if (session()->has('token'))
+              <!-- Dropdown for User Profile and Logout -->
+              <nav x-data="{ open: false }" class="relative">
+                  <button @click="open = !open" class="flex items-center space-x-2 text-black-500 hover:text-gray-700">
+                      <div>{{ session('user')['name'] }}</div>
+                      <i class="far fa-circle-user fa-2x"></i>
+                  </button>
+
+                  <!-- Dropdown Content -->
+                  <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                      <x-dropdown-link :href="route('profile.edit')" class="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+                          {{ __('Profile') }}
+                      </x-dropdown-link>
+
+                      <!-- Authentication -->
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+                          <x-dropdown-link :href="route('logout')" class="block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                                  onclick="event.preventDefault(); this.closest('form').submit();">
+                              {{ __('Log Out') }}
+                          </x-dropdown-link>
+                      </form>
+                  </div>
+              </nav>
+          @else
+              <a href="{{ route('login') }}" class="flex items-center space-x-2 text-black-500 hover:text-gray-700">
+                  <div>Login</div>
+                  <i class="far fa-circle-user fa-2x"></i>
+              </a>
+          @endif
         </div>
     </header>
     <!-- JUMBOTRON START -->
     <div class="jumbotron" id="home">
       <div class="content">
-        <h1>Nutrishe</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        <h1 class="font-medium">NutriShe</h1>
+        <p class="font-medium">
+        
+        Nutrishe is a website that helps users calculate food calories based on weight, age, height, and activity level. With this tool, users can find out their daily calorie needs and calculate calories from various food menus. In addition to the calorie counting feature, 
+        Nutrishe provides articles on health and nutrition to broaden users' knowledge about healthy
+         eating and effective diet tips.
         </p>
-        <a href="#rsvnow" class="rsv-now">Track your calories</a>
+        <a href="{{ route('meal.index') }}" class="rsv-now">Track your calories</a>
       </div>
 
       <div class="jumbotron-img">
@@ -51,96 +83,86 @@
     <!-- JUMBOTRON END -->
 
     <!-- FEATURES START -->
-    <div class="features">
+    <div class="features" id="features">
       <div class="features-container">
-        <h1>Features</h1>
+        <h1 class="font-medium">Features</h1>
 
-        <a href="diet_planner.html" class="feature">
+        <a href="{{ route('meal.ai') }}" class="feature">
           <img src="{{ asset('assets/diet-planner.png') }}" alt="Diet Planner Icon" />
-          <p>AI Recommend</p>
+          <p class="font-medium">AI Recommend</p>
         </a>
 
-        <a href="meal_tracker.html" class="feature">
+        <a href="{{ route('meal.index') }}" class="feature">
           <img src="{{ asset('assets/meal-tracker.png') }}" alt="Meal Tracker Icon" />
-          <p>Meal Tracker</p>
+          <p class="font-medium">Meal Tracker</p>
         </a>
 
-        <a href="log_period.html" class="feature">
+        <a href="{{ route('calculator.calculator') }}" class="feature">
           <img src="{{ asset('assets/calories-calculator.png') }}" alt="Log Period Icon" />
-          <p>Log Calories</p>
+          <p class="font-medium">Calorie Calculator</p>
         </a>
       </div>
 </div>
     <!-- FEATURES END -->
 
     <!-- ARTICLES START -->
-    <div class="articles-part">
+    <div class="articles-part" id="article">
       <div class="articles-container">
-        <h1>Articles</h1>
+        <h1 class="font-medium">Articles</h1>
         <div class="articles">
           <div class="article">
-            <img src="{{ asset('assets/article-1.png') }}" alt="Article Image" />
-            <h2>Lorem ipsum dolor sit amet</h2>
+            <img src="{{ asset('assets/article-1.jpg') }}" alt="Article Image" />
+            <h2 class="font-medium">Healthy eating basics</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat...
-              <a href="#">See more</a>
+            Eating a healthy, balanced diet is one of the most important things you can do to protect your health. In fact, up to 80% of premature heart disease and stroke can be prevented through your life choices and habits, such as eating a healthy diet and being physicall...
+              <a href="https://www.heartandstroke.ca/healthy-living/healthy-eating/healthy-eating-basics">See more</a>
             </p>
           </div>
           <div class="article">
-            <img src="{{ asset('assets/article-2.png') }}" alt="Article Image" />
-            <h2>Lorem ipsum dolor sit amet</h2>
+            <img src="{{ asset('assets/article-2.jpg') }}" alt="Article Image" />
+            <h2 class="font-medium">Healthy Eating Plate</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat...
-              <a href="#">See more</a>
+              Make most of your meal vegetables and fruits – ½ of your plate.
+              Aim for color and variety, and remember that potatoes don’t count as vegetables on 
+              the Healthy Eating Plate because of their negative impact on blood sugar....
+              <a href="https://nutritionsource.hsph.harvard.edu/healthy-eating-plate/">See more</a>
             </p>
           </div>
           <div class="article">
-            <img src="{{ asset('assets/article-3.png') }}" alt="Article Image" />
-            <h2>Lorem ipsum dolor sit amet</h2>
+            <img src="{{ asset('assets/article-3.jpg') }}" alt="Article Image" />
+            <h2 class="font-medium">A List of 50 Super Healthy Foods</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat...
-              <a href="#">See more</a>
+            Many foods are both healthy and tasty. By filling your plate with fruits, vegetables, quality protein sources, and other whole foods, 
+            you’ll have meals that are colorful, versatile, and good for you....
+              <a href="https://www.healthline.com/nutrition/50-super-healthy-foods">See more</a>
             </p>
           </div>
           <div class="article">
-            <img src="{{ asset('assets/article-4.png') }}" alt="Article Image" />
-            <h2>Lorem ipsum dolor sit amet</h2>
+            <img src="{{ asset('assets/article-4.jpg') }}" alt="Article Image" />
+            <h2 class="font-medium">Healthy eating</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat...
-              <a href="#">See more</a>
+            Healthy eating isn’t about cutting out or focusing on individual foods or nutrients. It’s thinking about your whole diet and eating a 
+            variety of foods in the right amounts to give your body what it needs....
+              <a href="https://www.bhf.org.uk/informationsupport/support/healthy-living/healthy-eating">See more</a>
             </p>
           </div>
         </div>
-        <a href="#" class="view-all-btn">View all articles</a>
+        <a href="{{ route('search') }}" class="view-all-btn">See More</a>
       </div>
 </div>
     <!-- ARTICLES END -->
 
     <!-- ABOUT START -->
-    <div class="about-us">
+    <div class="about-us" style="padding-right: 150px; padding-left: 150px;">
       <div class="about-image">
-        <img src="{{ asset('assets/about-us.png') }}" alt="" />
+        <img src="{{ asset('assets/desainceria.png') }}" alt="" />
       </div>
 
       <div class="about-caption">
-        <h1>About Us</h1>
+        <h1 class="font-medium">About Us</h1>
         <h3>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        Nutrishe is a website that helps users calculate food calories based on weight, age, height, and activity. In addition,
+        Nutrishe provides articles on health and nutrition to broaden users' knowledge about healthy eating.
         </h3>
       </div>
 </div>
@@ -164,8 +186,12 @@
     </footer>
     </div>
     <!-- FOOTER END -->
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
 </body>
 </html>
+
 
 
 <!-- <!DOCTYPE html>

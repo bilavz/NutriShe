@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'NutriShe Meal Tracker')</title>
+    <title>@yield('title', 'NutriShe')</title>
     <link href="{{ asset('css/apps.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}"/>
     <link href="https://fonts.googleapis.com/css2?family=Satisfy:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
-<body class="bg-gradient-to-r from-pink-200 to-orange-300/75 antialiased">
+<body class="bg-gradient-to-r from-pink-200 to-orange-300/75 antialiased flex-container">
 
     <!-- Header -->
     <header class="bg-gradient-to-r from-pink-200 to-orange-300/75 p-4 flex justify-between items-center">
@@ -23,9 +29,7 @@
         </div>
         <nav>
         <a href="{{ route('welcome') }}" class="{{ request()->routeIs('welcome') ? 'text-orange font-medium' : 'text-black' }} mr-4">Home</a>
-        <a href="#" class="{{ request()->routeIs('features') ? 'text-orange font-medium' : 'text-black' }} mr-4">Features</a>
-        <a href="#" class="{{ request()->routeIs('article') ? 'text-orange font-medium' : 'text-black' }} mr-4">Article</a>
-        <a href="#" class="{{ request()->routeIs('dietPlanner') ? 'text-orange font-medium' : 'text-black' }}">Diet Planner</a>
+        <a href="{{ route('search') }}" class="{{ request()->routeIs('search') ? 'text-orange font-medium' : 'text-black' }} ml-4">Article</a>
         <a href="{{ route('calculator.calculator') }}" class="{{ request()->routeIs('calculator.calculator') ? 'text-orange font-medium' : 'text-black' }} ml-4">Calorie Calculator</a>
         <a href="{{ route('meal.index') }}" class="{{ request()->routeIs('meal.index') ? 'text-orange font-medium' : 'text-black' }} ml-4">Calorie Tracker</a>
 
@@ -58,14 +62,14 @@
     </header>
 
     <!-- Main Content -->
-    <main class="p-6">
+    <main class="flex-grow">
         <div class="container mx-auto">
             @yield('container')
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-pink-200 to-orange-300/75 p-4 mt-6 text-center">
+    <footer class="bg-gradient-to-r from-pink-200 to-orange-300/75 p-4 mt-6 text-center bottom-footer">
         <p class="text-black font-medium">&copy; 2024 NutriShe</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>

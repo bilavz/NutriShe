@@ -71,6 +71,8 @@ body {
   line-height: inherit;
   /* 2 */
   font-family: "Poppins", sans-serif;
+  height: 100%;
+  min-height: 100vh;
 }
 
 /*
@@ -120,6 +122,8 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+
+
 
 /*
 Add the correct font weight in Edge and Safari.
@@ -199,6 +203,18 @@ table {
 2. Remove the margin in Firefox and Safari.
 3. Remove default padding in all browsers.
 */
+
+.button-orange-transparent{
+  background-color: #EA7F59;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 button,
 input,
@@ -937,6 +953,22 @@ select {
   height: 100vh;
 }
 
+.h-screen2 {
+  height: 80vh;
+}
+
+.h-screen3 {
+  height: auto;
+}
+
+.h-screen4 {
+  height: 40vh;
+}
+
+.h-screen5 {
+  height: 20vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1281,6 +1313,12 @@ select {
   padding-bottom: 3rem;
 }
 
+.py-13 {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  height: 20px;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1314,6 +1352,7 @@ select {
 
 .pr-4 {
   padding-right: 1rem;
+  padding-top: 1rem;
 }
 
 .pt-1 {
@@ -1525,8 +1564,8 @@ select {
 }
 
 .shadow-xl {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  --tw-shadow: 0 -5px 15px -3px rgb(0 0 0 / 0.1), 5px 20px 25px -5px rgb(0 0 0 / 0.1), 5px 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 -5px 15px -3px var(--tw-shadow-color), 5px 20px 25px -5px var(--tw-shadow-color), 5px 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1984,7 +2023,7 @@ select {
 /* JUMBOTRON */
 
 .jumbotron {
-  min-height: 100vh;
+  max-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1995,8 +2034,6 @@ select {
 }
 
 .jumbotron .content {
-  margin-right: 90px;
-  padding-left: 6%;
   max-width: 700px;
 }
 
@@ -2122,6 +2159,7 @@ select {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 450px;
+  height:430px;
   margin: 0 30px;
   padding: 15px;
   text-align: left;
@@ -2129,6 +2167,7 @@ select {
 
 .article img {
   width: 100%;
+  height: 200px;
   border-radius: 10px 10px 0 0;
 }
 
@@ -2165,11 +2204,12 @@ select {
 
 .about-us {
   display: flex;
-  padding: 0 12rem;
 }
 
 .about-image img {
-  height: 23rem;
+  /* height: 2rem; */
+  width: 105rem;
+  border-radius: 20px;
 }
 
 .about-caption {
@@ -2484,11 +2524,13 @@ select {
 .meal-option:hover {
   outline: 1px solid #EA7F59;
   color: #8a6659;
+  
 }
 
 .meal-option.selected {
   background-color: #EA7F59;
   color: white;
+  
 }
 
 /* CSS for navigation buttons */
@@ -2539,7 +2581,6 @@ select {
 .meal-calories {
   flex: 1;
   text-align: right;
-  margin-right: 50px;
 }
 .meal-action {
   flex: 0 0 auto;
@@ -2548,3 +2589,350 @@ select {
   margin-right: 10px;
 }
 
+
+:root {
+  --primary: #ea7f59;
+  --background: #fff4f0;
+  --hover: #ea7f59;
+  --jumbotron: #f3b6a4;
+}
+
+/* JUMBOTRON */
+
+.jumbotron {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--jumbotron);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.jumbotron .content {
+  margin-right: 90px;
+  padding-left: 6%;
+  max-width: 700px;
+}
+
+.jumbotron .content h1 {
+  font-size: 65px;
+  color: var(--primary);
+}
+
+.jumbotron .content p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.jumbotron .content a {
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.jumbotron .content .rsv-now {
+  background-color: var(--primary);
+  color: white;
+  border: 3px solid var(--primary);
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin-right: 18px;
+}
+
+.jumbotron .content .rsv-now:hover {
+  background-color: var(--background);
+  color: var(--primary);
+  border: 3px solid var(--primary);
+  transition: 0.1s;
+}
+
+.jumbotron img {
+  width: 26rem;
+  margin-right: 100px;
+}
+
+/* FEATURES */
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.features-container {
+  text-align: center;
+  max-width: 900px;
+  margin: 6rem auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.features-container h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.feature {
+  display: inline-block;
+  width: 200px;
+  margin: 10px 40px;
+  text-align: center;
+  gap: 60px;
+}
+
+.features-container a {
+  color: #000;
+  font-weight: 600;
+}
+
+.feature img {
+  width: 140px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.feature p {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+/* ARTICLE */
+.articles-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 20rem;
+  margin-bottom: 30rem;
+}
+
+.articles-container {
+  text-align: center;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.articles-container h1 {
+  font-size: 2em;
+  margin-bottom: 3rem;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  justify-items: center;
+}
+
+.article {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(233, 152, 127, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 450px;
+  margin: 0 30px;
+  padding: 15px;
+  text-align: left;
+}
+
+.article img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.article h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.article p {
+  font-size: 0.9em;
+}
+
+.article a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.view-all-btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.view-all-btn:hover {
+  background-color: #b55a1e;
+}
+
+/* ABOUT */
+
+.about-us {
+  display: flex;
+  padding: 0 12rem;
+}
+
+.about-image img {
+  height: 23rem;
+}
+
+.about-caption {
+  display: block;
+  padding: 1rem 2rem 0 6rem;
+}
+
+.about-caption h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.about-caption h3 {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: #f3b6a4; /* Adjust the color to match your design */
+  padding: 40px 0 0 0;
+  color: #000;
+  text-align: center;
+  margin-top: 8rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  text-align: left;
+}
+
+.footer-container .contact-info h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-container .contact-info p {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.contact-info i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.footer-image img {
+  max-width: 200px;
+}
+
+.footer-bottom {
+  background-color: #fff0f1;
+  padding: 10px 0;
+  bottom: 0;
+  margin-top: 20px;
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.bottom-footer{
+  margin-top: auto;
+}
+
+/* date picker */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url(assets/date_icon.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+
+/* calculator pop up */
+.blurred {
+  filter: blur(5px);
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.p p{
+  overflow: auto;
+  white-space: pre;
+}
+
+
+/* ARTICLE SEARCH */
+.article-flex{
+  display: flex;
+}
+
+.article-flex h2{
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  bottom: 0;
+}
+.flex-grow {
+  flex: 1;
+}
+
+.button-pink-transparent{
+  background: linear-gradient(to right, #fbcfe8, rgba(251, 191, 36, 0.75));
+  color: #dd6235;
+  border: 2px solid #EA7F59;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

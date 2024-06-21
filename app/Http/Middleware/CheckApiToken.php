@@ -16,8 +16,8 @@ class CheckApiToken
      */
     public function handle(Request $request, Closure $next)
     {
-        if(! $request->session()->has('token')) {
-            return redirect()-> route('login');
+        if (! $request->session()->has('token') && ! $request->routeIs('logout')) {
+            return redirect()->route('login');
         }
         
         return $next($request);

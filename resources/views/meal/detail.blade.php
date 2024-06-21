@@ -237,8 +237,7 @@
                 }
                 renderCalendar(currentMonth, currentYear);
             }
-
-            function goToNextMonth() {
+            function goToNextMonth() { 
                 currentMonth++;
                 if (currentMonth > 11) {
                     currentMonth = 0;
